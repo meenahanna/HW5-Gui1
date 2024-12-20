@@ -1,0 +1,108 @@
+<!--
+File: index.html
+Scrabble Game: GUI Homework 5
+Mena Hanna, UMass Lowell Computer Science, mhanna@cs.uml.edu
+Copyright (c) 2024 by Mena Hanna. All rights reserved. May be freely copied or excerpted for educational purposes with credit to the author.
+Last updated: December 19, 2024
+
+This HTML file is the backbone of the Scrabble Game project.
+It provides the structure for the user interface and includes various sections such as instructions, rules, the scoreboard, and controls.
+The page layout is responsive and organized to ensure usability and accessibility.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrabble Game - GUI HW5</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <header>
+        <h1>Scrabble Game</h1>
+    </header>
+    <main>
+        <!-- Instructions and Rules Container -->
+        <div id="instructions-rules-container">
+            <section id="instructions">
+                <h2>Instructions</h2>
+                <p><strong>Welcome to the Scrabble Game! Here's how to play:</strong></p>
+                <ul>
+                    <li>Drag tiles from the tile rack to the Scrabble board to form words.</li>
+                    <li>Words must be connected, and tiles must be placed adjacent to one another without gaps.</li>
+                    <li>Click the <strong>Validate Word</strong> button to check if your word is valid and calculate your score.</li>
+                    <li>Refresh the tile rack using the <strong>Refresh Letters</strong> button for a new set of tiles.</li>
+                    <li>If you want to clear the board, use the <strong>Clear Board</strong> button to move all tiles back to the rack.</li>
+                    <li>Start a new game anytime with the <strong>Start Over</strong> button.</li>
+                    <li>The game keeps track of your highest score.</li>
+                </ul>
+            </section>
+
+            <section id="rules">
+                <h2>Rules</h2>
+                <ul>
+                    <li>Words must contain at least two letters to be valid.</li>
+                    <li>Each tile has a point value, and bonus squares on the board can multiply your score.</li>
+                    <li>Double-word score squares multiply the total word score by 2.</li>
+                    <li>Words can only be validated once; repeated validation will not earn additional points.</li>
+                    <li>The game uses a standard English dictionary to validate words.</li>
+                    <li>Blank tiles can be used as any letter, but they have no point value.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Scoreboard -->
+        <div id="score-container">
+            <p>
+                Word: <span id="current-word"></span> | 
+                Score: <span id="score">0</span> | 
+                Remaining Tiles: <span id="remaining-tiles">100</span>
+            </p>
+            <p>Highest Score: <span id="highest-score">–</span></p>
+        </div>
+
+        <!-- Scrabble Board -->
+        <div id="scrabble-board-container">
+            <div id="scrabble-board-overlay"></div> <!-- Interactive overlay -->
+            <img src="./graphics_data/one_line.png" alt="Scrabble Board" id="scrabble-board">
+        </div>
+        
+
+        <!-- Tile Rack -->
+        <div id="tile-rack-container">
+            <div id="tile-rack-container">
+                <img src="./graphics_data/scrabble-tile-holder-406774_640.png" alt="Tile Rack" id="tile-rack-background">
+                <div id="tile-rack"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div id="controls">
+            <button id="validate-word">Validate Word</button>
+            <button id="refresh-letters">Refresh Letters</button>
+            <button id="clear-board">Clear Board</button>
+            <button id="new-game">Start Over</button>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="hidden">
+            <div class="modal-content">
+                <p id="modal-message"></p>
+                <button id="close-modal">Close</button>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./js/Scrabble_Pieces_AssociativeArray_Jesse.js"></script>
+    <script src="./js/script.js"></script>
+
+    <footer id="footer">
+        <p>&copy; 2024 Mena Hanna. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>

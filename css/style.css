@@ -1,0 +1,265 @@
+/*
+File: style.css
+This file is responsible for styling the Scrabble game to make it visually appealing and user-friendly.
+It uses a warm, brown-yellowish background to set the theme, with complementary colors like SaddleBrown and Cornsilk for headers and sections.
+The layout is carefully designed to center the elements and ensure proper spacing. The Scoreboard and Tile Rack are styled with borders, shadows, and Cornsilk backgrounds to make them stand out.
+Buttons are enlarged with hover effects and matching shadows for better interactivity. The Modal is styled to appear prominently over the content, with dynamic transitions for better feedback.
+The Footer seamlessly integrates into the design, echoing the theme and ensuring the page has a polished finish.
+ */
+body {
+  background-color: #F4E1C1; /* Brown-yellowish background */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black; /* Dark text for readability */
+}
+
+/* Header Styling */
+header {
+  background-color: #8B4513; /* SaddleBrown header */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 5px solid #C19A6B; /* Border matching the theme */
+}
+
+/* Main Layout */
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Instructions and Rules Container */
+#instructions-rules-container {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  gap: 20px; /* Space between the sections */
+  width: 100%;
+  margin-bottom: 20px; /* Add some space below the sections */
+}
+
+/* Individual Sections (Instructions and Rules) */
+#instructions, #rules {
+  flex: 1; /* Equal width for both sections */
+  background-color: #FFF8DC; /* Cornsilk background for sections */
+  border: 2px solid #C19A6B; /* Matching borders */
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 45%; /* Restrict maximum width */
+}
+
+#instructions h2, #rules h2 {
+  color: #8B4513;
+}
+
+#instructions ul, #rules ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: square;
+}
+
+
+/* Scoreboard Styling */
+#score-container {
+  background-color: #FFF8DC;
+  border: 3px solid #C19A6B;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  width: 50%;
+}
+
+/* For the Scrabble Board Row */
+#scrabble-board-container {
+  max-width: 560px; /* Adjust based on 80px * 7 cells */
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid #C19A6B;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#scrabble-board {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#scrabble-board-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Create 7 equal columns */
+  grid-template-rows: 1fr; /* Single row */
+  gap: 0; /* No gaps between cells */
+}
+
+.board-cell {
+  pointer-events: auto; /* Enable interactions on cells */
+  border: 2px dashed transparent; /* Set visible border for debugging alignment */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #DDD8B8;
+}
+
+
+.double-word-score {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+
+#tile-rack-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  border: 2px solid #C19A6B;
+  border-radius: 10px;
+  background-color: #FFF8DC;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#tile-rack-background {
+  width: 100%;
+  max-width: 700px;
+  height: 150px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tile Rack for the Tiles */
+#tile-rack {
+  position: absolute; /* Positioned on top of the rack background */
+  top: 30%; /* Adjust to align tiles properly */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Space between tiles */
+  z-index: 2; /* Above the background */
+}
+
+.tile {
+  width: 70px;
+  height: 70px;
+  background-size: cover; /* Ensure the image covers the tile */
+  border: 1px solid #333;
+  background-position: center; /* Center the image within the tile */
+  background-repeat: no-repeat;
+  display: inline-block; /* Makes the tiles inline */
+  text-align: center; /* Centers text on the tile if needed */
+  line-height: 40px; /* Matches the height for vertical centering */
+  font-weight: bold;
+  font-size: 12px;
+  cursor: grab;
+  object-fit: cover;
+}
+
+.tile:active {
+  cursor: grabbing; /* Change cursor on drag */
+}
+
+/* Controls */
+#controls {
+  margin-top: 10px;
+}
+
+/* Buttons */
+button {
+  padding: 15px 25px; /* Increase size */
+  margin: 10px;
+  font-size: 1.2rem; /* Increase font size */
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #A0522D; /* Lighter brown for hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+
+/* Modal */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+  transition: visibility 0.3s, opacity 0.3s ease-in-out;
+}
+
+#modal:not(.hidden) {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+}
+
+.modal-content button {
+  background-color: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #A0522D;
+}
+
+/* Footer Styling */
+#footer {
+  background-color: #8B4513; /* SaddleBrown to match the header */
+  color: #FFF8DC; /* Cornsilk for text */
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1rem;
+  border-top: 2px solid #C19A6B; /* Matching border */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow above */
+  bottom: 0;
+  width: 100%;
+  z-index: 999; /* Ensures it's above other elements */
+}
